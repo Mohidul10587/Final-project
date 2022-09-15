@@ -1,0 +1,8 @@
+{
+  "run": {
+    "type": "file",
+    "file": "public/index.html",
+    "ignoreCurrent": false,
+    "task": "npm/start"
+  }
+}
