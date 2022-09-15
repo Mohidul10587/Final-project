@@ -30,6 +30,7 @@ const Navbar = () => {
             <li><a>Home</a></li>
          <li><a>Appointment</a></li>
        <li>oj</li>
+       
           </ul>
         </div>
         <div class="navbar-end">
