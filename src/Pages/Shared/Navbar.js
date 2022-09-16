@@ -12,10 +12,7 @@ const Navbar = () => {
   <li><Link to="/">Login</Link></li>
   
   </>
-  
-  
-  
-  
+ 
     return (
         <div class="navbar bg-base-100">
         <div class="navbar-start">
