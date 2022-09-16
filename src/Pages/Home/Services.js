@@ -12,22 +12,22 @@ const Services  = () => {
   const services =[
     {
       _id:1,
-      name:'',
-      service :'',
+      name:'Dental Care',
+      description :'',
       img:fluoride
       
     },
 {
   _id: 2,
-  name: '',
-  service: '',
+  name: 'Health Life',
+  description: '',
   img: cavity
 
 },
 {
   _id: 3,
   name: '',
-  service: '',
+  description: 'Health good',
   img: whitening
 
 }
@@ -37,12 +37,12 @@ const Services  = () => {
     return (  
     <>
  <p className='my-4'> Our Servic</p>
-      <div>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
       
       
       {services.map(service=>{
         
-        <Service service={service} />
+        <Service key={service._id} service={service} />
       })}
       </div>
       
