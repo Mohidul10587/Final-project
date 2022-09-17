@@ -1,10 +1,10 @@
 import React from 'react'
-import doctor f
+import doctor from '../../assets/images/doctor.png'
 const MakeAppointment = () => {
   return (
     <section>
         <div>
-            <img src="" alt="" />
+            <img src={doctor} alt="" />
         </div>
 
 <div>
