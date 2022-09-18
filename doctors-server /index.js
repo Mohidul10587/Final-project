@@ -15,16 +15,19 @@ app.use(express.json())
 const uri = "mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jrhw6sp.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-/*
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});*/
 
 async function run() {
 try {
   await client.connect()
+  const serviceCollection = client.db('doctors_portal').collection('services')
+  
+  app.get('/service',async(req,res)=> {
+    const query =   {};
+    const cursor = serviceCollection.find(query);
+    const service = await cursor.toArray();
+    res.send(service)
+  })
+  
 } finally {
   
 }
