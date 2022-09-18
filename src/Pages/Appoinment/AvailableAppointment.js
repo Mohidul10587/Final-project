@@ -25,7 +25,8 @@ fetch('services.json')
     >      
     </Service>)}
 </div>
-{treatment && <BookingModal treatment={treatment}></BookingModal>}
+{treatment && <BookingModal treatment={treatment} 
+date={date}></BookingModal>}
         </div>
     );
 }
