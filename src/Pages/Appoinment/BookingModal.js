@@ -1,7 +1,13 @@
 import React from 'react';
 import format from 'date-fns'
-const BookingModal = ({ treatment,date }) => {
-    const {name, slot} =treatment
+const BookingModal = ({ treatment,date, setTreatment }) => {
+    const {_id,name, slot} =treatment
+    const handleBpoking =(e)=>{
+      e.preventDefault()
+      setTreatment(null)
+      const slott = e.target.slot.value
+      console.log (slott,name,_id)
+    }
     return (
         <div>
 
