@@ -12,10 +12,14 @@ const BookingModal = ({ treatment }) => {
 
                     <h3 className="font-bold text-lg">{name}</h3>
                     <form>
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                    <input type="submit" placeholder="Type here" className="btn btn-secondary w-full max-w-xs" value ='Submit' />
                     </form>
-                    <div className="modal-action">
-                        <label htmlFor="booking-modal" className="btn">Yay!</label>
-                    </div>
+                    
                 </div>
             </div>
         </div>
