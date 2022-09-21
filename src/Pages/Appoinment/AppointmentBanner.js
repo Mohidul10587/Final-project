@@ -4,7 +4,7 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 const AppointmentBanner = ({date , setDate}) => {
 
-    console.log(date)
+
     return (
         <div>
   <div className="hero-content flex-col lg:flex-row-reverse">

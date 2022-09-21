@@ -1,13 +1,14 @@
 import React from 'react';
 import { format } from 'date-fns'
 const BookingModal = ({ treatment, date, setTreatment }) => {
-    const { _id, name, slot } = treatment
-    const handleBooking = (e) => {
-        e.preventDefault()
-        setTreatment(null)
-        const slott = e.target.slot2.value
-        console.log(slott, name, _id)
+    const { name, slot } = treatment
+    const handleBooking = (event) => {
+        event.preventDefault()
+        // setTreatment(null)
+        const sll = event.target.sll.value
+        console.log(sll)
     }
+    console.log(slot)
     return (
         <div>
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
@@ -17,8 +18,8 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                     <h3 className="font-bold text-lg">{name}</h3>
                     <form onClick={handleBooking}>
                         <input  type="text" disabled value={format(date, 'PP')} className="input input-bordered w-full max-w-xs" />
-                        <select name='slot2'  className="select select-bordered w-full max-w-xs">
-                            {slot.map(sl => <option key={sl}>{sl}</option>)}
+                        <select name="sll"  className="select select-bordered w-full max-w-xs">
+                            {slot.map(sl => <option value={sl} key={sl}>{sl}</option>)}
                         </select>
                         <input name='name' type="text" placeholder="Name" className="input input-bordered w-full max-w-xs" />
                         <input name='email' type="email" placeholder='email' className="input input-bordered w-full max-w-xs" />
