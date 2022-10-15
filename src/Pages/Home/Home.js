@@ -15,7 +15,6 @@ const Home = () => {
        <Services />
        <Card/>
        <MakeAppointment />
-
        <Testmonials></Testmonials>
        <ContactForm></ContactForm>
     </>

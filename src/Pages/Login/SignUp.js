@@ -1,48 +1,72 @@
-import React from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React from 'react'
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
-
-const Login = () => {
+const SignUp = () => {
+  
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate()
 
-    let navigate = useNavigate();
-    let location = useLocation();
-
-    let from = location.state?.from?.pathname || "/";
-
+    const [updateProfile, updateError] = useUpdateProfile(auth);
+    if (loading || gLoading) return <div className='flex justify-center items-center h-screen'> <Loading></Loading>
+    </div>
 
     let firebaseError;
 
-    if (loading || gLoading) {
-
-        return <div className='flex justify-center items-center h-screen'> <Loading></Loading>
-        </div>
-    }
-
-    if (error || gError) {
-        firebaseError = <small className='text-red-500'>{error?.message || gError?.message}</small>
+    if (error || gError || updateError) {
+        firebaseError = <small className='text-red-500'>{error?.message || gError?.message || updateError?.message}</small>
     }
 
     if (user || gUser) {
-        navigate(from, { replace: true });
+        console.log(user || gUser)
     }
-    const onSubmit = data => {
-
-        signInWithEmailAndPassword(data.email, data.password)
-
+    const onSubmit = async data => {
+        console.log(data);
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName: data.name });
+   
     }
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-xl">Log in</h2>
+                    <h2 className="text-center text-xl">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text">Name</span>
 
+                            </label>
+                            <input
+
+                                type="text"
+                                placeholder="Name"
+                                className="input input-bordered border-black w-full max-w-xs"
+
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: 'This is required field'
+                                    }
+
+                                })} />
+
+                            <label className="label">
+
+                                {errors.name?.type === 'required' && <span className='text-red-500'>{errors.name?.message}</span>}
+
+                            </label>
+
+                        </div>
 
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -111,7 +135,7 @@ const Login = () => {
 
 
                     </form>
-                    <small>New to Doctors Portal <Link className='text-primary' to='/signUp'>Create new account</Link></small>
+                    <small>Already have an account<Link className='text-primary ml-4' to='/logIn'>Go to Login</Link></small>
                     <div className="divider">OR</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline">Continue with google</button>
@@ -120,7 +144,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Login;
+export default SignUp
