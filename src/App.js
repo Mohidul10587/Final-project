@@ -8,6 +8,7 @@ import Footer from './Pages/Shared/Footer';
 import Appointment from './Pages/Appoinment/Appointment';
 import SignUp from './Pages/Login/SignUp';
 import RequireAuth from './Pages/Login/RequireAuth';
+import UpdatePassword from './Pages/Login/UpdatePassword';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path='/appointment' element={<RequireAuth><Appointment></Appointment></RequireAuth>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signUp' element={<SignUp></SignUp>}></Route>
+          <Route path='/updatePassword' element={<UpdatePassword></UpdatePassword>}></Route>
+
 
 
         </Routes>

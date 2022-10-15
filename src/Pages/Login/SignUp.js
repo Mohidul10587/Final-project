@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 const SignUp = () => {
@@ -15,6 +15,9 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate()
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     const [updateProfile, updateError] = useUpdateProfile(auth);
     if (loading || gLoading) return <div className='flex justify-center items-center h-screen'> <Loading></Loading>
@@ -27,7 +30,7 @@ const SignUp = () => {
     }
 
     if (user || gUser) {
-        console.log(user || gUser)
+        navigate(from, { replace: true });
     }
     const onSubmit = async data => {
         console.log(data);

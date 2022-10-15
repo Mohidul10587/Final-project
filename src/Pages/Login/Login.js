@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -15,6 +15,11 @@ const Login = () => {
 
     let from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true });
+        }
+    }, [user, gUser, from,navigate])
 
     let firebaseError;
 
@@ -28,9 +33,7 @@ const Login = () => {
         firebaseError = <small className='text-red-500'>{error?.message || gError?.message}</small>
     }
 
-    if (user || gUser) {
-        navigate(from, { replace: true });
-    }
+
     const onSubmit = data => {
 
         signInWithEmailAndPassword(data.email, data.password)
@@ -111,6 +114,8 @@ const Login = () => {
 
 
                     </form>
+                    <small>Forgot password ?<Link className='text-primary' to='/updatePassword'>Reset  password </Link></small>
+
                     <small>New to Doctors Portal <Link className='text-primary' to='/signUp'>Create new account</Link></small>
                     <div className="divider">OR</div>
 
