@@ -1,14 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { format } from 'date-fns'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
-const BookingModal = ({ treatment, date, setTreatment }) => {
+const BookingModal = ({ treatment, date, setTreatment ,refetch}) => {
     const [user] = useAuthState(auth);
     const formateData = format(date, 'PP')
     const { _id, name, slots } = treatment;
+
+
     const handleBooking = (event) => {
         event.preventDefault();
         const slot = event.target.select.value
@@ -37,6 +40,8 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
                 } else {
                     toast.error(`Have an appointment on ${data.booking?.date} at ${data.booking?.slot}`)
                 }
+
+                refetch()
                 setTreatment(null)
             })
 
