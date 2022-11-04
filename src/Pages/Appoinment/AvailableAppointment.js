@@ -38,7 +38,7 @@ const AvailableAppointment = ({ date }) => {
                 </Service>)}
             </div>
             {treatment && <BookingModal
-refetch={refetch}
+                refetch={refetch}
                 treatment={treatment}
                 setTreatment={setTreatment}
                 date={date}>
