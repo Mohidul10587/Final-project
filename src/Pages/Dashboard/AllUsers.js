@@ -19,18 +19,17 @@ const Users = () => {
   if (isLoading) return <Loading></Loading>
 
   return (
-    <div>
-      <h2>{users.length}</h2>
-
+    <div className='mt-10'>
       <div className="overflow-x-auto">
         <table className="table w-full">
 
-          <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+          <thead className='border-[1px] border-gray-800'>
+            <tr >
+              <th className='border-[1px] border-gray-800 text-center'>User Email</th>
+              <th className='border-[1px] border-gray-800 text-center'>User Roll</th>
+              <th className='border-[1px] border-gray-800 text-center'>Remove</th>
+
+
             </tr>
           </thead>
           <tbody>

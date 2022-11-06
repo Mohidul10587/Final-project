@@ -36,17 +36,17 @@ const MyAppointments = () => {
 
 
   return (
-    <div>
-      this is a appointment{appointments.length}
+    <div className='mt-4'>
+   
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Treatment</th>
+              <th className='border-[1px] border-gray-800'>Name</th>
+              <th className='border-[1px] border-gray-800'>Date</th>
+              <th className='border-[1px] border-gray-800'>Time</th>
+              <th className='border-[1px] border-gray-800'>Treatment</th>
 
             </tr>
           </thead>
