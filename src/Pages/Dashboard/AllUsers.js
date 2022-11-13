@@ -7,7 +7,7 @@ const Users = () => {
 
 
   const { isLoading, data: users ,refetch} = useQuery('users', () =>
-    fetch(`https://secure-wildwood-98183.herokuapp.com/user`, {
+    fetch(`http://localhost:5000/user`, {
       method: 'GET',
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`
