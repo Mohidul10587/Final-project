@@ -20,6 +20,8 @@ import RequireAdmin from './Pages/Login/RequireAdmin';
 import Review from './Pages/Review/Review';
 import Contact from './Pages/Contact/Contact';
 import AddDoctor from './Pages/Dashboard/AddDoctor';
+import ManageDoctors from './Pages/Dashboard/ManageDoctors';
+
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
             <Route path='myHistory' element={<MyHistory></MyHistory>}></Route>
             <Route path='users' element={<RequireAdmin> <AllUsers></AllUsers></RequireAdmin>}></Route>
             <Route path='addDoctor' element={<RequireAdmin> <AddDoctor></AddDoctor></RequireAdmin>}></Route>
+            <Route path='manageDoctors' element={<RequireAdmin> <ManageDoctors></ManageDoctors></RequireAdmin>}></Route>
+
 
 
           </Route>
